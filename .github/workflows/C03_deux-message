@@ -8,11 +8,11 @@ env:
 
 jobs:
   - name: action_push
-    if: ${{github.event_name == push}}
+    if: github.event_name == push
     runs-on: ubuntu-latest
     run: echo $PUSH 
   - name: action_pull
-    if: ${{github.event_name == pull_request}}
+    if: github.event_name == pull_request
     runs-on: ubuntu-latest
     run: echo $PULL_REQ 
 
