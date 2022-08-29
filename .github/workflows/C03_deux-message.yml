@@ -1,6 +1,6 @@
 name: deux message
 
-on: workflow_dispatch
+on: [push,pull_request]
 
 env:
   PUSH: "C'est un push !"
