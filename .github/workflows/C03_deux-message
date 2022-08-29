@@ -1,6 +1,6 @@
 name: deux message
 
-on: issue_comment
+on: workflow_dispatch
 
 env:
   PUSH: "C'est un push !"
