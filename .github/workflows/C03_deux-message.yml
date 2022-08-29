@@ -1,0 +1,22 @@
+name: deux message
+
+on: workflow_dispatch
+
+env:
+  PUSH: "C'est un push !"
+  PULL_REQ:  "C'est une pull request !"
+
+jobs:
+  push:
+    if: ${{github.event_name == push}}
+    runs-on: ubuntu-latest
+    steps:
+      - name: action_push
+        run: echo $PUSH 
+  pr:
+    runs-on: ubuntu-latest
+    if: ${{github.event_name == pull_request}}
+    steps:
+      - name : action_pull
+        run: echo $PULL_REQ 
+
