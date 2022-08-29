@@ -1,0 +1,25 @@
+# Pipeline de base pour le plaisir de la pratique <3
+# NOM DE WORKFLOWS :
+name: learn-github-actions
+# TRIGGER. ICI LORS DES PUSH
+on: [push]
+# LISTE DES JOBS :
+jobs:
+  # PREMIER JOB
+  check-bats-version:
+    # DEFINITION DU RUNNER (ubuntu,derniere version)
+    runs-on: ubuntu-latest
+    # ---
+    steps:
+      - uses: actions/checkout@v3
+      # ---
+      - uses: actions/setup-node@v3
+      # ---
+        with:
+        # ---
+          node-version: "14"
+        # ---
+        # ---
+      - run: npm install -g bats 
+      # ---
+      - run: bats -v
