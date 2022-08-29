@@ -14,7 +14,7 @@ jobs:
     steps: 
       # 1er job pr dire bonjour
       - name: "dit bonjour"
-        run: echo "salut $NAME tu travailles chez $entreprise ? Alors bijour $DAY"
+        run: echo "salut $NAME tu travailles chez $entreprise ?? Alors bijour $DAY"
         env:
           DAY: Lundi
       - name: "lundi ?"
