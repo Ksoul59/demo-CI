@@ -1,25 +1,35 @@
-name: env-var-demo
+name: Demo-Env-Var
 
 on: workflow_dispatch
 
 env:
-  NAME: Kevin
+  NAME: kevin
 
-jobs: 
-
+jobs:
+  
+  # Premier job pour dire bonjour
   say_hello:
     runs-on: ubuntu-latest
+    # Variable d'environnement accessible uniquement dans ce job
     env:
-      entreprise: semifir
-    steps: 
-      # 1er job pr dire bonjour
-      - name: "dit bonjour"
-        run: echo "salut $NAME tu travailles chez $entreprise ?? Alors bijour $DAY"
+      ENTREPRISE: Semifir
+    steps:
+      # On test toutes les variables d'environnement
+      - name: "Dit bonjour !"
+        run: echo "Salut $NAME ! Tu travailles chez $ENTREPRISE ? Alors, un bon $DAY à toi"
+        # Variable d'env accessible uniquement dans CE steps
         env:
           DAY: Lundi
-      - name: "lundi ?"
-        run: echo "Quel jour sommes nous ?  $DAY"
-        env:
-          DAY: Lundi
+      # On essaie d'accéder à la variable $DAY déclarée dans le steps précédent
+      # SPOILER ALERT : ça ne va pas marcher :D
+      - name: "Lundi ?"
+        run: echo "Quel jour ssommes nous ? $DAY ?"
+  
+  # Second job
   say_goodbye:
     runs-on: ubuntu-latest
+    steps:
+      # On essaie d'acceder à la var d'env. $NAME déclarée dans le job précédent
+      # Ca ne va pas marcher non plus :D
+      - name: "Dit au revoir !"
+        run: echo "Au revoir $NAME ! Tu travailles pour quelle entreprise ? $ENTREPRISE ?"
