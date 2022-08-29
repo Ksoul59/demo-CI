@@ -1,0 +1,25 @@
+name: env-var-demo
+
+on: workflow_dispatch
+
+env:
+  NAME: Kevin
+
+jobs: 
+
+  say_hello:
+    runs-on: ubuntu-latest
+    env:
+      entreprise: semifir
+    steps: 
+      # 1er job pr dire bonjour
+      - name: "dit bonjour"
+        run: echo "salut $NAME tu travailles chez $entreprise ? Alors bijour $DAY"
+        env:
+          DAY: Lundi
+      - name: "lundi ?"
+        run: echo "Quel jour sommes nous ?  $DAY"
+        env:
+          DAY: Lundi
+  say_goodbye:
+    runs-on: ubuntu-latest
