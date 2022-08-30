@@ -1,0 +1,13 @@
+name: Issue is opened
+
+on:
+  issues:
+    types:
+      - opened
+
+jobs:
+  message-issue-open:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: echo 'issue is open'
