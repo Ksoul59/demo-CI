@@ -1,4 +1,4 @@
-name: Issue is opened
+name: PR and merge
 
 on:
   pull_request:
