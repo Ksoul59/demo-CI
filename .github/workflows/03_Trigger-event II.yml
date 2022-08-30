@@ -1,0 +1,14 @@
+name: Issue is opened
+
+on:
+  pull_request:
+    types:
+      - closed
+
+jobs:
+  message-issue-open:
+    runs-on: ubuntu-latest
+    if: ${{github.event.pull_request.merged == true}}
+    steps:
+      - name : message-is-merge
+        run: echo 'Vous avez mergé !'
